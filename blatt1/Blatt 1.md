@@ -9,11 +9,11 @@
 * In intern network, the ipv4 area is from 10.153.210.1(gwsec) ~ 10.153.210.254(secserver), so the smallest ipv4/submask should be <mark>10.153.210.0 /24 </mark>  (255.255.255.0)
 
 ###1.c) Answer:
-* In praktikum network, the ipv6 with common prefix 2001:4ca0:4001:f21:: /64, but some in infrastructure with the ipv6 adr: 2001:4ca0:4001:f00::1, so the Smallest ipv6 prefix should be: <mark>2001:4ca0:4001:0f:: /56</mark> .
+* In praktikum network, the ipv6 with common prefix 2001:4ca0:4001:f21:: /64, but some in infrastructure with the ipv6 adr: 2001:4ca0:4001:f00::1, so the Smallest ipv6 prefix should be: <mark>2001:4ca0:4001:f00:: /56</mark> .
 
 -----------------
 ##Aufgabe_2
-###2.a)Answer:
+###2.a) Answer:
 
 * ARP:	arp cache is empty on gwsec, pcsec1 and pcsec2
 * Netstat:
@@ -94,3 +94,30 @@
 ------------
 ##Aufgabe_4
 
+###4.a)
+I use command to capture the infomation for icmp and arp
+	> root@gwsec:~# tcpdump -n -i ens7 icmp or arp
+
+* **Before** clear the the ARP Table
+	* When  **ping 1 time from pcsec1 to gwsec**,  the Messages for **ICMP:**
+		* ![Alt text](./1610905676075.png)
+
+		* each time of ping, it has ***one ICMP echo request and one ICMP echo reply***
+	
+	* When **ping 1 time from pcsec1 to secserver**, the Message for **ARP request:**
+		* ![Alt text](./1610905816806.png)
+
+		* each time of ping, it will forward to secserver with interface ens8.
+* **After** clear the ARP Table
+	* When  **ping 1 time from pcsec1 to gwsec**,  the Messages for **ICMP:**
+		* ![Alt text](./1610905406602.png)
+		* It will first has ARP message to tell pcsec1 where is gwsec
+	* When **ping from pcsec1 to secserver**, the Message for **ARP request:**
+		* ![Alt text](./1610905596522.png)
+		* The order of Arp and ICMP is different from the time before clearing the arp table.  Arp normally first to tell where the dst to the gwsec and pcsec1.
+
+### 4.b)
+![Alt text](./1610906240608.png)
+ARP table has the entries only from pcsec1(10.153.210.2), without pcsec2, because till now the ping request is only from pcsec1.
+
+###4.c)
