@@ -1,5 +1,5 @@
 #Blatt 1
-
+--------------------
 ##Aufgabe_1
 ###1.a) Answer:
 * Broadcast addr: 10.153.210.7
@@ -11,7 +11,7 @@
 ###1.c) Answer:
 * In praktikum network, the ipv6 with common prefix 2001:4ca0:4001:f21:: /64, but some in infrastructure with the ipv6 adr: 2001:4ca0:4001:f00::1, so the Smallest ipv6 prefix should be: <mark>2001:4ca0:4001:0f:: /56</mark> .
 
-
+-----------------
 ##Aufgabe_2
 ###2.a)Answer:
 
@@ -47,8 +47,6 @@
 	* ip route = netstat -route
 	* ip link / ip addr = ifconfig
 
-
-###2.b)
 ###2.c) 		
 * From **gwsec**:
 	* hacktest unreachable
@@ -73,4 +71,26 @@
 ###2.d)
 * From **gwsec:**
 	* ARP: some ARP eneries are cached
-		* 	 	
+	 ![Alt text](./1610814659300.png)
+	* Routing Table:
+	![Alt text](./1610814751334.png)
+
+* From **pcsec1:**
+	 * ARP: some ARP eneries are cached
+	 ![Alt text](./1610814823518.png)
+
+	 *  Routing Table:
+	![Alt text](./1610814843723.png)
+
+* From **pcsec2:**
+	 * the same as **pcsec1**
+
+---------
+##Aufgabe_3
+###3.d)
+* Added Item: the default route and route in Praktikumnetz in routing table.
+![Alt text](./1610842088153.png)
+
+------------
+##Aufgabe_4
+
